@@ -1,12 +1,20 @@
 // alert("this shit works!");
-
+// variables defined at the global scope
 let finalResult = 0;
 const defaultValue = 0;
 let currentResult = defaultValue;
 
 function add (n1, n2){
+    // const result = n1 + n2;
+    // alert(`the result is ${result}`)
     return n1 + n2;
 }
+
+// add(1, 2);
+// add(5, 5);
+// add(6, 8);
+
+const adittionalResault = add(5, 5);
 
 function sub (n1, n2){
     return n1 - n2;
@@ -39,4 +47,4 @@ let errMsg = `here is \\"`
 
 currentResult = (currentResult + 10) * 3 / 2 - 1;
 
-outputResult(currentResult, errMsg);
+outputResult(adittionalResault, "5 + 5 = ");
