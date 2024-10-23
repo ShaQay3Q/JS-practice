@@ -1,36 +1,37 @@
 // alert("this shit works!");
+
+const { userInfo, type } = require("os");
+
 // variables defined at the global scope
 let finalResult = 0;
 const defaultValue = 0;
 let currentResult = defaultValue;
 
-function add(n1, n2) {
-	// const result = n1 + n2;
-	// alert(`the result is ${result}`)
-	currentResult = currentResult + userInput.value;
-	// currentResultOutput.textContent = currentResult;
+function add() {
+	currentResult = currentResult + Number(userInput.value);
 	outputResult(currentResult, "");
+	// userInfo.value = "";
 }
 
 addBtn.addEventListener("click", add);
 
 subtractBtn.addEventListener("click", () => {
-	currentResult = currentResult - userInput.value;
+	currentResult = currentResult - Number(userInput.value);
 	outputResult(currentResult, "");
+	// userInfo.value = "";
 });
 
-function sub(n1, n2) {
-	return n1 - n2;
-}
-
-function multi(n1, n2) {
-	return n1 * n2;
-}
-
-function div(n1, n2) {
-	if (!n2) {
-		return n1 / n2;
+function div() {
+	type = typeof userInput.value;
+	n = Number(userInput.value);
+	if (!typeof type === "number" && !n) {
+		if (!n) {
+			currentResult = currentResult / n;
+		} else {
+			currentResult = "inf";
+		}
 	} else {
-		return "inf";
+		currentResult;
 	}
+	return currentResult;
 }
