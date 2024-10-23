@@ -1,5 +1,3 @@
-// alert("this shit works!");
-
 // variables defined at the global scope
 let finalResult = 0;
 const defaultValue = 0;
@@ -17,14 +15,14 @@ addBtn.addEventListener("click", add);
 subtractBtn.addEventListener("click", () => {
 	currentResult = currentResult - Number(userInput.value);
 	outputResult(currentResult, "");
-	userInput.value = ""; // Clear the input field after addition
+	userInput.value = ""; // Clear the input field
 	userInput.focus();
 });
 
 function mult() {
 	currentResult = currentResult * Number(userInput.value);
 	outputResult(currentResult, "");
-	userInput.value = ""; // Clear the input field after addition
+	userInput.value = "";
 	userInput.focus();
 }
 
@@ -39,7 +37,12 @@ function divi() {
 		currentResult = "inf";
 	}
 	outputResult(currentResult, "");
-	userInput.value = ""; // Clear the input field after addition
+	currentResult = 0;
+	setTimeout(() => {
+		outputResult(currentResult, "");
+	}, 3000);
+
+	userInput.value = "";
 	userInput.focus();
 }
 
