@@ -2,7 +2,13 @@
 let finalResult = 0;
 const defaultValue = 0;
 let currentResult = defaultValue;
-// clear the user entery field and keep the focus on
+
+// Clear and Focuse on the user entery field
+const clearAndFocus = () => {
+	userInput.value = ""; // Clear the input field
+	userInput.focus();
+};
+
 clearAndFocus();
 
 // Pasre the user input to number
@@ -19,22 +25,16 @@ function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
 	outputResult(currentResult, calcDescription); // from vendor file
 }
 
-// Clear and Focuse on the user entery field
-const clearAndFocus = () => {
-	userInput.value = ""; // Clear the input field
-	userInput.focus();
-};
-
 function add() {
 	const initialResult = currentResult;
-	currentResult = currentResult + getUsrNoInpt();
+	currentResult += getUsrNoInpt();
 	createAndWriteOutput("+", initialResult, getUsrNoInpt());
 	clearAndFocus();
 }
 
 function mult() {
 	const initialResult = currentResult;
-	currentResult = currentResult * getUsrNoInpt();
+	currentResult *= getUsrNoInpt();
 	createAndWriteOutput("*", initialResult, getUsrNoInpt());
 	clearAndFocus();
 }
@@ -44,7 +44,7 @@ function divi() {
 	console.log(`userInputValue = ${getUsrNoInpt()}`);
 
 	if (getUsrNoInpt() !== 0) {
-		currentResult = currentResult / getUsrNoInpt();
+		currentResult /= getUsrNoInpt();
 	} else {
 		currentResult = "inf";
 	}
@@ -63,7 +63,7 @@ divideBtn.addEventListener("click", divi);
 multiplyBtn.addEventListener("click", mult);
 subtractBtn.addEventListener("click", () => {
 	const initialResult = currentResult;
-	currentResult = currentResult - getUsrNoInpt();
+	currentResult -= getUsrNoInpt();
 	createAndWriteOutput("-", initialResult, getUsrNoInpt());
 	clearAndFocus();
 });
