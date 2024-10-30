@@ -36,7 +36,7 @@ function mult() {
 	const initialResult = currentResult;
 
 	currentResult = currentResult * getUsrNoInpt();
-	createAndWriteOutput("/", initialResult, getUsrNoInpt());
+	createAndWriteOutput("*", initialResult, getUsrNoInpt());
 	clearAndFocus();
 }
 
@@ -66,7 +66,7 @@ subtractBtn.addEventListener("click", () => {
 	const initialResult = currentResult;
 
 	currentResult = currentResult - getUsrNoInpt();
-	createAndWriteOutput("/", initialResult, getUsrNoInpt());
+	createAndWriteOutput("-", initialResult, getUsrNoInpt());
 	userInput.value = "";
 	userInput.focus();
 });
