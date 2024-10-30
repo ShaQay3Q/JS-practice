@@ -5,7 +5,7 @@ let currentResult = defaultValue;
 // clear the user entery field and keep the focus on
 clearAndFocus();
 
-// pasre the user input to number
+// Pasre the user input to number
 function getUsrInptNo() {
 	return Number(userInput.value);
 }
@@ -13,13 +13,13 @@ function getUsrInptNo() {
 // pasre the user input to number
 const getUsrNoInpt = () => Number(userInput.value);
 
-// write the currentResult, the operator and inputed value as well as outputing the result
+// Generate and writes calculation log
 function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
 	const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
-	outputResult(currentResult, calcDescription);
+	outputResult(currentResult, calcDescription); // from vendor file
 }
 
-// clear the user entery field and keep the focus on
+// Clear and Focuse on the user entery field and keep the focus
 const clearAndFocus = () => {
 	userInput.value = ""; // Clear the input field
 	userInput.focus();
@@ -34,7 +34,6 @@ function add() {
 
 function mult() {
 	const initialResult = currentResult;
-
 	currentResult = currentResult * getUsrNoInpt();
 	createAndWriteOutput("*", initialResult, getUsrNoInpt());
 	clearAndFocus();
@@ -64,9 +63,7 @@ divideBtn.addEventListener("click", divi);
 multiplyBtn.addEventListener("click", mult);
 subtractBtn.addEventListener("click", () => {
 	const initialResult = currentResult;
-
 	currentResult = currentResult - getUsrNoInpt();
 	createAndWriteOutput("-", initialResult, getUsrNoInpt());
-	userInput.value = "";
-	userInput.focus();
+	clearAndFocus();
 });
