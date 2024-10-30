@@ -19,7 +19,7 @@ function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
 	outputResult(currentResult, calcDescription); // from vendor file
 }
 
-// Clear and Focuse on the user entery field and keep the focus
+// Clear and Focuse on the user entery field
 const clearAndFocus = () => {
 	userInput.value = ""; // Clear the input field
 	userInput.focus();
