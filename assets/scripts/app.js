@@ -2,51 +2,46 @@
 let finalResult = 0;
 const defaultValue = 0;
 let currentResult = defaultValue;
-userInput.value = "";
-userInput.focus();
+// clear the user entery field and keep the focus on
+clearAndFocus();
 
+// pasre the user input to number
 function getUsrInptNo() {
 	return Number(userInput.value);
 }
 
+// pasre the user input to number
 const getUsrNoInpt = () => Number(userInput.value);
 
-function add() {
-	const calcDescription = `${currentResult} + ${getUsrNoInpt()}`;
-	currentResult = currentResult + getUsrNoInpt();
-	console.log(
-		`type of Number(userInput.value) is: ${typeof Number(userInput.value)}
-		and it's value is: ${getUsrNoInpt()}`
-	);
-
+// write the currentResult, the operator and inputed value as well as outputing the result
+function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
+	const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
 	outputResult(currentResult, calcDescription);
-	userInput.value = ""; // Clear the input field
-	userInput.focus();
 }
 
-addBtn.addEventListener("click", add);
-
-subtractBtn.addEventListener("click", () => {
-	// const entrdNo = Number(userInput.value);
-	const calcDescription = `${currentResult} - ${getUsrNoInpt()}`;
-
-	currentResult = currentResult - getUsrNoInpt();
-	outputResult(currentResult, calcDescription);
-	userInput.value = "";
+// clear the user entery field and keep the focus on
+const clearAndFocus = () => {
+	userInput.value = ""; // Clear the input field
 	userInput.focus();
-});
+};
+
+function add() {
+	const initialResult = currentResult;
+	currentResult = currentResult + getUsrNoInpt();
+	createAndWriteOutput("+", initialResult, getUsrNoInpt());
+	clearAndFocus();
+}
 
 function mult() {
-	const calcDescription = `${currentResult} * ${getUsrNoInpt()}`;
+	const initialResult = currentResult;
 
 	currentResult = currentResult * getUsrNoInpt();
-	outputResult(currentResult, calcDescription);
-	userInput.value = "";
-	userInput.focus();
+	createAndWriteOutput("/", initialResult, getUsrNoInpt());
+	clearAndFocus();
 }
 
 function divi() {
-	const calcDescription = `${currentResult} / ${getUsrNoInpt()}`;
+	const initialResult = currentResult;
 	console.log(`userInputValue = ${getUsrNoInpt()}`);
 
 	if (getUsrNoInpt() !== 0) {
@@ -54,15 +49,24 @@ function divi() {
 	} else {
 		currentResult = "inf";
 	}
-	outputResult(currentResult, calcDescription);
+
+	createAndWriteOutput("/", initialResult, getUsrNoInpt());
+
 	currentResult = 0;
 	setTimeout(() => {
 		outputResult(currentResult, "");
 	}, 3000);
 
-	userInput.value = "";
-	userInput.focus();
+	clearAndFocus();
 }
-
+addBtn.addEventListener("click", add);
 divideBtn.addEventListener("click", divi);
 multiplyBtn.addEventListener("click", mult);
+subtractBtn.addEventListener("click", () => {
+	const initialResult = currentResult;
+
+	currentResult = currentResult - getUsrNoInpt();
+	createAndWriteOutput("/", initialResult, getUsrNoInpt());
+	userInput.value = "";
+	userInput.focus();
+});
