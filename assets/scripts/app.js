@@ -26,17 +26,28 @@ function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
 	outputResult(currentResult, calcDescription); // from vendor file
 }
 
+function writeToLog(
+	oprationIdentifier,
+	previousResult,
+	operationNumber,
+	newResult
+) {
+	let logEntry = {
+		// key - values, actually the key : property
+		op: oprationIdentifier,
+		prevResult: previousResult,
+		number: operationNumber,
+		result: newResult,
+	};
+	logEntries.push(logEntry);
+	console.log(logEntries);
+	console.log(logEntry.op);
+}
+
 function add() {
 	const initialResult = currentResult;
 	currentResult += getUsrNoInpt();
-	let logEnrty = {
-		op: "+",
-		prevResault: initialResult,
-		number: getUsrNoInpt(),
-		result: currentResult,
-	};
-	logEntries.push(logEnrty);
-	console.log(logEntries);
+	writeToLog("ADD", initialResult, getUsrNoInpt(), currentResult);
 	createAndWriteOutput("+", initialResult, getUsrNoInpt());
 	clearAndFocus();
 }
@@ -44,14 +55,7 @@ function add() {
 function mult() {
 	const initialResult = currentResult;
 	currentResult *= getUsrNoInpt();
-	let logEnrty = {
-		op: "*",
-		prevResault: initialResult,
-		number: getUsrNoInpt(),
-		result: currentResult,
-	};
-	logEntries.push(logEnrty);
-	console.log(logEntries);
+	writeToLog("Multiply", initialResult, getUsrNoInpt(), currentResult);
 	createAndWriteOutput("*", initialResult, getUsrNoInpt());
 	clearAndFocus();
 	logEntries.push("-");
@@ -69,14 +73,7 @@ function divi() {
 			outputResult(currentResult, "");
 		}, 3000);
 	}
-	let logEnrty = {
-		op: "/",
-		prevResault: initialResult,
-		number: getUsrNoInpt(),
-		result: currentResult,
-	};
-	logEntries.push(logEnrty);
-	console.log(logEntries);
+	writeToLog("Divide", initialResult, getUsrNoInpt(), currentResult);
 
 	createAndWriteOutput("/", initialResult, getUsrNoInpt());
 
@@ -88,14 +85,7 @@ multiplyBtn.addEventListener("click", mult);
 subtractBtn.addEventListener("click", () => {
 	const initialResult = currentResult;
 	currentResult -= getUsrNoInpt();
-	let logEnrty = {
-		op: "-",
-		prevResault: initialResult,
-		number: getUsrNoInpt(),
-		result: currentResult,
-	};
-	logEntries.push(logEnrty);
-	console.log(logEntries);
+	writeToLog("Substract", initialResult, getUsrNoInpt(), currentResult);
 	createAndWriteOutput("-", initialResult, getUsrNoInpt());
 	clearAndFocus();
 });
