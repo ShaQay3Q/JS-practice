@@ -2,6 +2,7 @@
 let finalResult = 0;
 const defaultValue = 0;
 let currentResult = defaultValue;
+let logEntries = [];
 
 // Clear and Focuse on the user entery field
 const clearAndFocus = () => {
@@ -28,6 +29,8 @@ function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
 function add() {
 	const initialResult = currentResult;
 	currentResult += getUsrNoInpt();
+	logEntries.push(getUsrNoInpt());
+	console.log(logEntries);
 	createAndWriteOutput("+", initialResult, getUsrNoInpt());
 	clearAndFocus();
 }
@@ -35,26 +38,28 @@ function add() {
 function mult() {
 	const initialResult = currentResult;
 	currentResult *= getUsrNoInpt();
+	logEntries.push(getUsrNoInpt());
+	console.log(logEntries);
 	createAndWriteOutput("*", initialResult, getUsrNoInpt());
 	clearAndFocus();
+	logEntries.push("-");
 }
 
 function divi() {
 	const initialResult = currentResult;
-	console.log(`userInputValue = ${getUsrNoInpt()}`);
-
 	if (getUsrNoInpt() !== 0) {
 		currentResult /= getUsrNoInpt();
+		logEntries.push(getUsrNoInpt());
+		console.log(logEntries);
 	} else {
 		currentResult = "inf";
+		currentResult = 0;
+		setTimeout(() => {
+			outputResult(currentResult, "");
+		}, 3000);
 	}
 
 	createAndWriteOutput("/", initialResult, getUsrNoInpt());
-
-	currentResult = 0;
-	setTimeout(() => {
-		outputResult(currentResult, "");
-	}, 3000);
 
 	clearAndFocus();
 }
@@ -64,6 +69,8 @@ multiplyBtn.addEventListener("click", mult);
 subtractBtn.addEventListener("click", () => {
 	const initialResult = currentResult;
 	currentResult -= getUsrNoInpt();
+	logEntries.push(getUsrNoInpt());
+	console.log(logEntries);
 	createAndWriteOutput("-", initialResult, getUsrNoInpt());
 	clearAndFocus();
 });
