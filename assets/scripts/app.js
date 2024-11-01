@@ -47,14 +47,15 @@ function mult() {
 
 function divi() {
 	const initialResult = currentResult;
+	logEntries.push(getUsrNoInpt());
+
 	if (getUsrNoInpt() !== 0) {
 		currentResult /= getUsrNoInpt();
-		logEntries.push(getUsrNoInpt());
 		console.log(logEntries);
 	} else {
 		currentResult = "inf";
-		currentResult = 0;
 		setTimeout(() => {
+			currentResult = 0;
 			outputResult(currentResult, "");
 		}, 3000);
 	}
