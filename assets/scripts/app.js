@@ -31,9 +31,9 @@ function add() {
 	currentResult += getUsrNoInpt();
 	let logEnrty = {
 		op: "+",
-		initValue: initialResult,
-		userInpurt: getUsrNoInpt(),
-		curValue: currentResult,
+		prevResault: initialResult,
+		number: getUsrNoInpt(),
+		result: currentResult,
 	};
 	logEntries.push(logEnrty);
 	console.log(logEntries);
@@ -46,9 +46,9 @@ function mult() {
 	currentResult *= getUsrNoInpt();
 	let logEnrty = {
 		op: "*",
-		initValue: initialResult,
-		userInpurt: getUsrNoInpt(),
-		curValue: currentResult,
+		prevResault: initialResult,
+		number: getUsrNoInpt(),
+		result: currentResult,
 	};
 	logEntries.push(logEnrty);
 	console.log(logEntries);
@@ -71,9 +71,9 @@ function divi() {
 	}
 	let logEnrty = {
 		op: "/",
-		initValue: initialResult,
-		userInpurt: getUsrNoInpt(),
-		curValue: currentResult,
+		prevResault: initialResult,
+		number: getUsrNoInpt(),
+		result: currentResult,
 	};
 	logEntries.push(logEnrty);
 	console.log(logEntries);
@@ -90,9 +90,9 @@ subtractBtn.addEventListener("click", () => {
 	currentResult -= getUsrNoInpt();
 	let logEnrty = {
 		op: "-",
-		initValue: initialResult,
-		userInpurt: getUsrNoInpt(),
-		curValue: currentResult,
+		prevResault: initialResult,
+		number: getUsrNoInpt(),
+		result: currentResult,
 	};
 	logEntries.push(logEnrty);
 	console.log(logEntries);
