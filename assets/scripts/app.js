@@ -29,7 +29,13 @@ function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
 function add() {
 	const initialResult = currentResult;
 	currentResult += getUsrNoInpt();
-	logEntries.push(getUsrNoInpt());
+	let logEnrty = {
+		op: "+",
+		initValue: initialResult,
+		userInpurt: getUsrNoInpt(),
+		curValue: currentResult,
+	};
+	logEntries.push(logEnrty);
 	console.log(logEntries);
 	createAndWriteOutput("+", initialResult, getUsrNoInpt());
 	clearAndFocus();
@@ -38,7 +44,13 @@ function add() {
 function mult() {
 	const initialResult = currentResult;
 	currentResult *= getUsrNoInpt();
-	logEntries.push(getUsrNoInpt());
+	let logEnrty = {
+		op: "*",
+		initValue: initialResult,
+		userInpurt: getUsrNoInpt(),
+		curValue: currentResult,
+	};
+	logEntries.push(logEnrty);
 	console.log(logEntries);
 	createAndWriteOutput("*", initialResult, getUsrNoInpt());
 	clearAndFocus();
@@ -47,8 +59,6 @@ function mult() {
 
 function divi() {
 	const initialResult = currentResult;
-	logEntries.push(getUsrNoInpt());
-
 	if (getUsrNoInpt() !== 0) {
 		currentResult /= getUsrNoInpt();
 		console.log(logEntries);
@@ -59,6 +69,14 @@ function divi() {
 			outputResult(currentResult, "");
 		}, 3000);
 	}
+	let logEnrty = {
+		op: "/",
+		initValue: initialResult,
+		userInpurt: getUsrNoInpt(),
+		curValue: currentResult,
+	};
+	logEntries.push(logEnrty);
+	console.log(logEntries);
 
 	createAndWriteOutput("/", initialResult, getUsrNoInpt());
 
@@ -70,7 +88,13 @@ multiplyBtn.addEventListener("click", mult);
 subtractBtn.addEventListener("click", () => {
 	const initialResult = currentResult;
 	currentResult -= getUsrNoInpt();
-	logEntries.push(getUsrNoInpt());
+	let logEnrty = {
+		op: "-",
+		initValue: initialResult,
+		userInpurt: getUsrNoInpt(),
+		curValue: currentResult,
+	};
+	logEntries.push(logEnrty);
 	console.log(logEntries);
 	createAndWriteOutput("-", initialResult, getUsrNoInpt());
 	clearAndFocus();
