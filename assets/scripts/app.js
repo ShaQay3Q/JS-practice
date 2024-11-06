@@ -12,13 +12,9 @@ const clearAndFocus = () => {
 
 clearAndFocus();
 
-// Pasre the user input to number
-function getUsrInptNo() {
-	return Number(userInput.value);
-}
-
 // pasre the user input to number
 const getUsrNoInpt = () => Number(userInput.value);
+// const getUsrNoInpt = () => userInput.value;
 
 // Generate and writes calculation log
 function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
@@ -45,6 +41,7 @@ function writeToLog(
 }
 
 function add() {
+	console.log(`add button: ${addBtn}`);
 	const initialResult = currentResult;
 	currentResult += getUsrNoInpt();
 	writeToLog("ADD", initialResult, getUsrNoInpt(), currentResult);
@@ -58,20 +55,19 @@ function mult() {
 	writeToLog("Multiply", initialResult, getUsrNoInpt(), currentResult);
 	createAndWriteOutput("*", initialResult, getUsrNoInpt());
 	clearAndFocus();
-	logEntries.push("-");
+	// logEntries.push("-");
 }
 
 function divi() {
 	const initialResult = currentResult;
 	if (getUsrNoInpt() !== 0) {
 		currentResult /= getUsrNoInpt();
-		console.log(logEntries);
 	} else {
 		currentResult = "inf";
 		setTimeout(() => {
 			currentResult = 0;
 			outputResult(currentResult, "");
-		}, 3000);
+		}, 2500);
 	}
 	writeToLog("Divide", initialResult, getUsrNoInpt(), currentResult);
 
@@ -79,13 +75,54 @@ function divi() {
 
 	clearAndFocus();
 }
-addBtn.addEventListener("click", add);
-divideBtn.addEventListener("click", divi);
-multiplyBtn.addEventListener("click", mult);
-subtractBtn.addEventListener("click", () => {
+addBtn.addEventListener("click", () => clickEvent("+"));
+divideBtn.addEventListener("click", () => clickEvent("/"));
+multiplyBtn.addEventListener("click", () => clickEvent("*"));
+subtractBtn.addEventListener("click", () => clickEvent("-"));
+
+function operantToOpName(opBtn) {
+	let opName = "";
+	if (opBtn === "+") {
+		opName = "Addition";
+	} else if (opBtn === "-") {
+		opName = "Substraction";
+	} else if (opBtn === "*") {
+		opName = "Multipication";
+	} else if (opBtn === "/") {
+		opName = "Division";
+	}
+	return opName;
+}
+
+function doSimpleMath(opBtn) {
+	if (opBtn === "+") {
+		currentResult += getUsrNoInpt();
+	} else if (opBtn === "-") {
+		currentResult -= getUsrNoInpt();
+	} else if (opBtn === "*") {
+		currentResult *= getUsrNoInpt();
+	} else {
+		if (getUsrNoInpt() !== 0) {
+			currentResult /= getUsrNoInpt();
+		} else {
+			currentResult = "inf";
+			setTimeout(() => {
+				currentResult = 0;
+				outputResult(currentResult, "");
+			}, 2500);
+		}
+	}
+}
+
+function clickEvent(opBtn) {
 	const initialResult = currentResult;
-	currentResult -= getUsrNoInpt();
-	writeToLog("Substract", initialResult, getUsrNoInpt(), currentResult);
-	createAndWriteOutput("-", initialResult, getUsrNoInpt());
+	doSimpleMath(opBtn);
+	writeToLog(
+		operantToOpName(opBtn),
+		initialResult,
+		getUsrNoInpt(),
+		currentResult
+	);
+	createAndWriteOutput(opBtn, initialResult, getUsrNoInpt());
 	clearAndFocus();
-});
+}
