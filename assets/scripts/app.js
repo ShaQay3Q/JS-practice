@@ -65,15 +65,14 @@ function doSimpleMath(opBtn) {
 			currentResult *= userInput;
 			break;
 		case "/":
-			if (userInput !== 0) {
+			if (userInput) {
 				currentResult /= userInput;
-			} else {
-				currentResult = "inf";
-				setTimeout(() => {
-					currentResult = 0;
-					outputResult(currentResult, "");
-				}, 2500);
 			}
+			currentResult = "inf";
+			setTimeout(() => {
+				currentResult = 0;
+				outputResult(currentResult, "");
+			}, 2500);
 	}
 }
 
